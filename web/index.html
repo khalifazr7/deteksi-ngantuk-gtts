@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ngantuk Detector - Web Edition</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- MediaPipe Face Mesh -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="overlay-container">
+      <!-- Visual Red Alert Overlay -->
+      <div id="alert-overlay" class="alert-overlay"></div>
+
+      <div class="hud-container">
+        <!-- HUD Border/Frame -->
+        <div class="hud-frame"></div>
+
+        <!-- Video Container -->
+        <div class="video-wrapper">
+          <video
+            id="input_video"
+            class="input_video"
+            autoplay
+            playsinline
+            muted
+          ></video>
+          <canvas id="output_canvas" class="output_canvas"></canvas>
+        </div>
+
+        <!-- HUD Elements -->
+        <div class="hud-ui">
+          <div class="hud-header">
+            <h1>SYSTEM: <span id="system-status">INITIALIZING...</span></h1>
+          </div>
+
+          <div class="hud-stats">
+            <div class="stat-box">
+              <span class="label">EAR LEVEL</span>
+              <div class="bar-container">
+                <div id="ear-bar" class="bar-fill"></div>
+              </div>
+              <span id="ear-value" class="value">0.00</span>
+            </div>
+          </div>
+
+          <div id="drowsiness-warning" class="hud-warning hidden">
+            WARNING: DROWSINESS DETECTED
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start Button Overlay -->
+    <div id="start-screen" class="start-screen">
+      <div class="start-content">
+        <h1>NGANTUK DETECTOR</h1>
+        <p>Web Edition</p>
+        <button id="start-btn">ACTIVATE SYSTEM</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
